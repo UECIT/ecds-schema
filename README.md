@@ -1,0 +1,29 @@
+## Generating the Java model from the schema
+
+* Download the CDS Schema from the [NHS TRUD service](https://www.datadictionary.nhs.uk/data_dictionary/messages/message_documentation/xml_schema_download/xml_schema_trud_download.asp?shownav=1)
+* Download the [XMLBeans binary distribution](https://xmlbeans.apache.org/download/index.html#XMLBeans+Binary+and+Development+Kit)
+
+```shell script
+rm -rf src/main/java
+java -cp [xmlbeans]/lib/xmlbeans-3.1.0.jar \
+  org.apache.xmlbeans.impl.tool.SchemaCompiler \ 
+  -src src/main/java -srconly -javasource 11 -verbose \
+  [schema]/cdsxml/CDS-XML_Message_Root-V6-2-2.xsd ecds.xsdconfig
+```
+
+This will remove and regenerate all Java classes for the schema
+
+
+## Licence
+
+Unless stated otherwise, the codebase is released under [the MIT License][mit].
+This covers both the codebase and any sample code in the documentation.
+
+The documentation is [© Crown copyright][copyright] and available under the terms
+of the [Open Government 3.0][ogl] licence.
+
+[rvm]: https://www.ruby-lang.org/en/documentation/installation/#managers
+[bundler]: http://bundler.io/
+[mit]: LICENCE
+[copyright]: http://www.nationalarchives.gov.uk/information-management/re-using-public-sector-information/uk-government-licensing-framework/crown-copyright/
+[ogl]: http://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/
